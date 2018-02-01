@@ -1,0 +1,22 @@
+height xx
+length xx
+
+generation number xx
+
+X is dead	
+O is alive
+. is empty
+
+
+
+
+The board will look like this:
+
+
+Generation Number 45
+------------------
+X | O |   | X | X
+------------------ 
+  | O | O | X | 
+------------------
+
