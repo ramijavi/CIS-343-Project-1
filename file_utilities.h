@@ -1,8 +1,9 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#ifndef file_utilities.h
-#define file_utilities.h
+#ifndef file_utilities_h
+#define file_utilities_h
 
 
 // This function will read data from a chosen file
