@@ -2,7 +2,7 @@
  * CIS 343 - 02 Structures of Programming Languages
  * Project 1 - The Game of Life
  * 
- * @authors - Andy Hung & Javier Ramirez
+ * @authors - Andy hing Hung & Javier Ramirez
  * 
  * The Game of Life was developed by John Conway (a British mathematician) in the 1970s. 
  * It is an example of a cellular automaton, a data structure that seems to evolve iteratively.
@@ -43,8 +43,18 @@ int main(int argc, char* argv[]){
 	printf("width is: %s \n", width);
 	printf("Would you like to open an existing saved generation?\n");
 	char openSave;
+	char fileName[20];
 	scanf("%c", &openSave);
 	printf("\n");
+	if(openSave == 'y'){
+		printf("Enter the file name you wish to open. \n");
+		scanf("%s", fileName);
+		printf("The fileName is: %s \n", fileName);
+		//fileName = malloc
+	}
+	else{
+	
+	}
 	printf("openSave: %c \n",openSave);
 	free(height);
 	free(width);
