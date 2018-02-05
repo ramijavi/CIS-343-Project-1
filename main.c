@@ -15,7 +15,34 @@
 
 void initilize();
 
+int allocateBoard(char h, char w){
+
+	int r = h, c = w, i, j, count;
+ 
+   	int **arr = (int **)malloc(r * sizeof(int *));
+	for (i=0; i<r; i++){
+        	arr[i] = (int *)malloc(c * sizeof(int));
+ 	}
+  	
+	count = 0;
+        for (i = 0; i <  r; i++){
+        	for (j = 0; j < c; j++){
+                	arr[i][j] = ++count;  // OR *(*(arr+i)+j) = ++count
+                }
+	}
+        
+	for (i = 0; i <  r; i++){
+        	for (j = 0; j < c; j++){
+                	printf("%d ", arr[i][j]);
+                }                          
+        }                             
+        
+	// return 0;
+}
+
 int main(int argc, char* argv[]){
+
+	int *boardLocation;
 
 	// Greet the player when the game is initialized
 	printf("Welcome player. You are playing the game of life\n");
@@ -31,7 +58,13 @@ int main(int argc, char* argv[]){
 	// If input is correct, then it's shown to the player
 	printf("You have chosen to play with a board of size : %s x %s \n", argv[1], argv[2]);
 	
+	int h = atoi(argv[1]);
+	int w = atoi(argv[2]);
+	
+	allocateBoard(h, w);
 
+	
+/*
 	char* height;
 	height = malloc(strlen(argv[1]));
 	height = strcat(height, argv[1]);
@@ -41,6 +74,8 @@ int main(int argc, char* argv[]){
 	width = malloc(strlen(argv[2]));
 	width = strcat(width, argv[2]);
 	printf("width is: %s \n", width);
+*/	
+
 	printf("Would you like to open an existing saved generation?\n");
 	char openSave;
 	scanf("%c", &openSave);
@@ -48,10 +83,7 @@ int main(int argc, char* argv[]){
 	printf("openSave: %c \n",openSave);
 	free(height);
 	free(width);
+
 	return 0;
 }
 
-void initialize_board(){
-
-	
-}
