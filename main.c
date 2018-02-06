@@ -18,7 +18,7 @@
 // Global variables declaration
 // A double pointer holds a pointer to the board
 // Two integrers hold the height and width
-int **board;
+char **board;
 int height, width;
 
 // This function allocates memory to hold the 2D array
@@ -26,15 +26,16 @@ int height, width;
 void allocateBoard(){
 
 	int r = height, c = width, i, j;
- 
-   	board = (int **)malloc(r * sizeof(int *));
+   	char emptyCell = ' ';
+	board = malloc(r * sizeof(char *));
+
 	for (i=0; i<r; i++){
-        	board[i] = (int *)malloc(c * sizeof(int));
+        	board[i] = malloc(c * sizeof(char));
  	}
   
         for (i = 0; i <  r; i++){
         	for (j = 0; j < c; j++){
-                	board[i][j] = 1;  // OR *(*(arr+i)+j) = ++count
+                	board[i][j] = emptyCell;  // OR *(*(arr+i)+j) = ++count
                 }
 	}                             
 }
@@ -43,21 +44,19 @@ void allocateBoard(){
 void printBoard(){
 
 	int i, j;
-
 	printf("\n");
 
 	for (i = 0; i <  height; i++){
 		
 		printf("| ");
-                
-		for (j = 0; j < width; j++){
-                        printf("%d", board[i][j]);
+         	for (j = 0; j < width; j++){
+                        printf("%c", board[i][j]);
 			printf(" | ");
         	}
 
-
 		printf("\n");
         }
+	printf("\n");
 }
 
 

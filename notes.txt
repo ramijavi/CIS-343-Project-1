@@ -3,9 +3,9 @@ length xx
 
 generation number xx
 
-X is dead	
-O is alive
-. is empty
+X is dead cell	
+O is alive cell
+  is empty
 
 
 
@@ -19,4 +19,5 @@ X | O |   | X | X
 ------------------ 
   | O | O | X | 
 ------------------
+
 
