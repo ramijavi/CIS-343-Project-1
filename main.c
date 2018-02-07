@@ -19,6 +19,7 @@
 // A double pointer holds a pointer to the board
 // Two integrers hold the height and width
 char **board;
+char **tempBoard;
 int height, width;
 
 // This function allocates memory to hold the 2D array
@@ -82,6 +83,25 @@ int main(int argc, char* argv[]){
 	allocateBoard();
  	
 	printBoard();
+	
+	printf("Would you like to open an existing saved generation?\n");
+	char openSave;
+	char fileName[20];
+	scanf("%c", &openSave);
+	printf("\n");
+	if(openSave == 'y'){
+		printf("Enter the file name you wish to open. \n");
+		scanf("%s", fileName);
+		printf("The fileName is: %s \n", fileName);
+		read_file(fileName, board);
+		
+	}
+	else{
+		printf("They said no %s", fileName);
+		exit(0);
+	}
+	free(board);
+	
 /*
 	char* height;
 	height = malloc(strlen(argv[1]));
@@ -94,20 +114,7 @@ int main(int argc, char* argv[]){
 	printf("width is: %s \n", width);
 	
 
-	printf("Would you like to open an existing saved generation?\n");
-	char openSave;
-	char fileName[20];
-	scanf("%c", &openSave);
-	printf("\n");
-	if(openSave == 'y'){
-		printf("Enter the file name you wish to open. \n");
-		scanf("%s", fileName);
-		printf("The fileName is: %s \n", fileName);
-		//fileName = malloc
-	}
-	else{
 	
-	}
 	printf("openSave: %c \n",openSave);
 	free(height);
 	free(width);
