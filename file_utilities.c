@@ -31,7 +31,7 @@ int read_file( char* filename, char **buffer){
 		printf("width is %d",width);
 		}
 		else {
-
+		//implement code to write to the buffer.
 		}
 	//if(ch > 64 && ch < 91){
 	 //toLowerCase(&ch);
