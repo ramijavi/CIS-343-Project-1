@@ -1,4 +1,4 @@
 3
 4
-oxoxxox
-xoxoxox
+o oxxox
+xox xox

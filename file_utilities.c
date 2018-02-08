@@ -2,7 +2,7 @@
 
 int read_file( char* filename, char **buffer){
 	printf("yay i got called. %s f \n", filename);
-
+	//allocateBoard();
 	char ch;
       	FILE *in;
 	in = fopen (filename,"r" );
@@ -17,7 +17,8 @@ int read_file( char* filename, char **buffer){
 	while ( ! feof(in) )   {
 	//Scans the character from filename
 	fscanf ( in, "%c", &ch );
-		printf("%c", ch);
+		//printf("%c", ch);
+		
 		if(ch > 48 && ch < 58 && counter == 0){
 		height = ch - '0';
 		counter++;
@@ -31,6 +32,7 @@ int read_file( char* filename, char **buffer){
 		printf("width is %d",width);
 		}
 		else {
+		printf("%c",ch);
 		//implement code to write to the buffer.
 		}
 	//if(ch > 64 && ch < 91){
