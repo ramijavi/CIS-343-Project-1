@@ -33,7 +33,7 @@ int main(int argc, char* argv[]){
 	printf("\nYou have chosen to play with a board of size : %s x %s \n", argv[1], argv[2]);
 	char **board;
 	char **tempBoard;
-	int height, width;
+	int height, width, generation;
 	height = atoi(argv[1]);
 	width = atoi(argv[2]);
 	
@@ -54,8 +54,10 @@ int main(int argc, char* argv[]){
 		read_file(fileName, &board);
 		height = getHeight(fileName);
 		width = getWidth(fileName);
-		printf("The height is %d and the width is %d \n",height, width);
+		generation = getGen(fileName);
+		printf("The height is %d, width is, %d and Gen. is %d \n",height, width,generation);
 		printBoard(board,height,width);
+		
 		
 	}
 	else{

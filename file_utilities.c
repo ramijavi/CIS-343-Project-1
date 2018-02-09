@@ -1,5 +1,6 @@
 #include "file_utilities.h"
 
+// This function reads the file and creates the board.
 int read_file( char* filename, char ***buffer){
 	printf("yay i got called. %s\n", filename);
 	char ch;
@@ -63,8 +64,9 @@ int read_file( char* filename, char ***buffer){
 	fclose(in);
 	return 0;
 }
-// The size is how many characters are in the file.
-int write_file( char* filename, char *buffer, int size){
+
+// This function writes the current board to a file, or a save.(The size is how many characters are in the file. what are we using it for?)
+int write_file( char* filename, char ***buffer, int size){
 
 	return 0;
 }
@@ -110,6 +112,7 @@ void printBoard(char** board, int height, int width){
 	printf("\n");
 }
 
+// This function frees the board that is malloced.
 void freeBoard(char*** board, int height){
 	int i = 0;
 	for(i = 0; i < height; i++){
@@ -119,6 +122,7 @@ void freeBoard(char*** board, int height){
 	free(*board);
 }
 
+// This function gets the height of the current board.
 int getHeight(char* filename){
 	FILE *in;
 	in = fopen (filename,"r" );
@@ -128,9 +132,11 @@ int getHeight(char* filename){
 	fgets(buf, sizeof(buf), in);
 	buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
 	height = atoi(buf);
+	fclose(in);
 	return height;
 }
 
+// This function gets the width of the current board.
 int getWidth(char* filename){
 	FILE *in;
 	in = fopen (filename,"r" );
@@ -147,13 +153,32 @@ int getWidth(char* filename){
 			} 
 			counter++;
 	}
+	fclose(in);
 	return width;
 }
 
+// This function gets the generation of the current board.
 int getGen(char* filename){
-
+	FILE *in;
+	in = fopen (filename,"r" );
+	int generation;
+	char buf[1024];
+	int counter = 0;
+	while(counter < 3){
+			fgets(buf, sizeof(buf), in);
+		    	buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
+			 if(counter == 2){
+				generation = atoi(buf);
+				printf("The width of the board is: ");
+				//printf("%d\n", width);
+			} 
+			counter++;
+	}
+	fclose(in);
+	return generation;
 }
 
+// This function populates the board.
 void populateBoard(char*** board, char* popArray, int height, int width){
 	int i,k;
 	int counter = 0;
@@ -164,4 +189,5 @@ void populateBoard(char*** board, char* popArray, int height, int width){
 		}
 	}
 }
+
 
