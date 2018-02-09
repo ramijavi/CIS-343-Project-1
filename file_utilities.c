@@ -2,7 +2,7 @@
 
 // This function reads the file and creates the board.
 int read_file( char* filename, char ***buffer){
-	printf("yay i got called. %s\n", filename);
+
 	char ch;
       	FILE *in;
 	in = fopen (filename,"r" );
@@ -132,8 +132,6 @@ int getWidth(char* filename){
 		    	buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
 			 if(counter == 1){
 				width = atoi(buf);
-				printf("The width of the board is: ");
-				//printf("%d\n", width);
 			} 
 			counter++;
 	}
@@ -153,8 +151,6 @@ int getGen(char* filename){
 		    	buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
 			 if(counter == 2){
 				generation = atoi(buf);
-				printf("The width of the board is: ");
-				//printf("%d\n", width);
 			} 
 			counter++;
 	}
