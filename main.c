@@ -37,8 +37,8 @@ int main(int argc, char* argv[]){
 	height = atoi(argv[1]);
 	width = atoi(argv[2]);
 	
-	board = allocateBoard(height,width);
- 	tempBoard = allocateBoard(height,width);
+	allocateBoard(&board,height,width);
+ 	allocateBoard(&tempBoard,height,width);
 	printBoard(board,height,width);
 	
 	printf("Would you like to open an existing saved generation?\n");
@@ -50,12 +50,12 @@ int main(int argc, char* argv[]){
 		printf("Enter the file name you wish to open. \n");
 		scanf("%s", fileName);
 		printf("The fileName is: %s \n", fileName);
-		freeBoard(board, height);
-		read_file(fileName, board);
+		freeBoard(&board, height);
+		read_file(fileName, &board);
 		height = getHeight(fileName);
 		width = getWidth(fileName);
 		printf("The height is %d and the width is %d \n",height, width);
-		//printBoard(board,height,width);
+		printBoard(board,height,width);
 		
 	}
 	else{
@@ -83,5 +83,6 @@ int main(int argc, char* argv[]){
 */
 	return 0;
 }
+
 
 

@@ -1,6 +1,6 @@
 #include "file_utilities.h"
 
-int read_file( char* filename, char **buffer){
+int read_file( char* filename, char ***buffer){
 	printf("yay i got called. %s\n", filename);
 	char ch;
       	FILE *in;
@@ -33,8 +33,8 @@ int read_file( char* filename, char **buffer){
 			counter++;
 		}
 		char populateArray[height*width];
-		buffer = allocateBoard(height, width);
-		printBoard(buffer,height,width);
+		allocateBoard(buffer,height, width);
+		//printBoard(buffer,height,width);
 		int popCounter = 0;
 		while ( ! feof(in) )   {
 			//Scans the character from filename
@@ -56,7 +56,7 @@ int read_file( char* filename, char **buffer){
      		}
 		
 		populateBoard(buffer, populateArray,height,width);
-		printBoard(buffer,height,width);	
+		//printBoard(buffer,height,width);	
 		
 	}
 
@@ -71,22 +71,23 @@ int write_file( char* filename, char *buffer, int size){
 
 // This function allocates memory to hold the 2D array
 // that holds the board. It uses the function malloc
-char** allocateBoard(int height,int width){
+void allocateBoard(char*** board,int height,int width){
 
 	int r = height, c = width, i, j;
    	char emptyCell = ' ';
-	char **board = malloc(r * sizeof(char *));
+	*board = (char **)malloc(r * sizeof(char *));
 
 	for (i=0; i<r; i++){
-        	board[i] = malloc(c * sizeof(char));
+        	(*board)[i] = (char *)malloc(c * sizeof(char ));
  	}
   
         for (i = 0; i <  r; i++){
         	for (j = 0; j < c; j++){
-                	board[i][j] = emptyCell;  // OR *(*(arr+i)+j) = ++count
+                	(*board)[i][j] = emptyCell;  // OR *(*(arr+i)+j) = ++count
                 }
-	} 
-	return board;    
+	}
+ 
+	//return board;    
                         
 }
 
@@ -109,13 +110,13 @@ void printBoard(char** board, int height, int width){
 	printf("\n");
 }
 
-void freeBoard(char** board, int height){
+void freeBoard(char*** board, int height){
 	int i = 0;
 	for(i = 0; i < height; i++){
-		free(board[i]);
+		free((*board)[i]);
 	}
     
-	free(board);
+	free(*board);
 }
 
 int getHeight(char* filename){
@@ -153,13 +154,14 @@ int getGen(char* filename){
 
 }
 
-void populateBoard(char** board, char* popArray, int height, int width){
+void populateBoard(char*** board, char* popArray, int height, int width){
 	int i,k;
 	int counter = 0;
 	for(i = 0; i < height; i++){
 		for(k = 0; k < width; k++){
-			board[i][k] = popArray[counter];
+			(*board)[i][k] = popArray[counter];
 			counter++;
 		}
 	}
 }
+
