@@ -55,7 +55,8 @@ int main(int argc, char* argv[]){
 		height = getHeight(fileName);
 		width = getWidth(fileName);
 		generation = getGen(fileName);
-		printf("The height is %d, width is, %d and Gen. is %d \n",height, width,generation);
+		printf("The file was succesfully loaded\n");
+		printf("The height is %d, width is, %d and gen is %d \n",height, width,generation);
 		printBoard(board,height,width);
 		
 		

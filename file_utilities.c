@@ -20,45 +20,29 @@ int read_file( char* filename, char ***buffer){
 		    	buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
 			if(counter == 0){
 				height = atoi(buf);
-				//printf("The height of the board is: ");
-		    		//printf("%d\n", height);
 			} else if(counter == 1){
 				width = atoi(buf);
-				//printf("The width of the board is: ");
-				//printf("%d\n", width);
 			} else{
 				genNum = atoi(buf);
-				//printf("The generation number is: ");
-				//printf("%d\n", genNum);
 			}
 			counter++;
 		}
+
 		char populateArray[height*width];
 		allocateBoard(buffer,height, width);
-		//printBoard(buffer,height,width);
 		int popCounter = 0;
+
 		while ( ! feof(in) )   {
 			//Scans the character from filename
-			fscanf ( in, "%c", &ch );
-			//printf("%c", ch);
+			fscanf ( in, "%c", &ch);
 		
 			if(!(ch > 48 && ch < 58) &&  ch != 10){
-				//printf("%c",ch);
 				populateArray[popCounter] = ch;
-				printf("%c",ch);
 				popCounter++;
 			}
-			//if(ch > 64 && ch < 91){
-			//toLowerCase(&ch);
-			//Writes to output.txt
-			//fprintf ( out, "%c", ch );
-			//closes while
-		
      		}
 		
-		populateBoard(buffer, populateArray,height,width);
-		//printBoard(buffer,height,width);	
-		
+		populateBoard(buffer, populateArray,height,width);	
 	}
 
 	fclose(in);
