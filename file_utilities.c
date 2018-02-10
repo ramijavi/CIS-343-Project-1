@@ -182,3 +182,7 @@ void copyBoard(char*** board, char** board2, int height, int width){
 	}
 
 }
+
+void runGeneration(char** board, char*** tempBoard){
+
+}

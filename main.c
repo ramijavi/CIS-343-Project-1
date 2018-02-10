@@ -72,8 +72,6 @@ int main(int argc, char* argv[]){
 		generation = getGen(fileName);
 		/* Allocating memory for the temp board */
 		allocateBoard(&tempBoard,height,width);
-		/* Copy the board onto the temp board ???????? */
-		copyBoard(&tempBoard, board, height, width);	
 		/* Display the board dimensions and generation */
 		printf("The file was succesfully loaded\n");
 		printf("The height is %d, width is, %d and gen is %d \n", height, width, generation);
@@ -99,6 +97,7 @@ int main(int argc, char* argv[]){
 
 
 		} else if(doNext == 'l'){
+		/* If user neters 'l', a saved generation will be loaded */
 			
 			/* Ask the player for the file name */
 	                printf("Enter the file name you wish to open. \n");
@@ -125,8 +124,13 @@ int main(int argc, char* argv[]){
 
 
 		} else if(doNext == 'g'){
+		/* If user enter 'g', the game will run one generation */
 
-
+			/* Copy the board onto the temp board */
+	                copyBoard(&tempBoard, board, height, width);
+			/* Call run generation function */
+			runGeneration(&board, tempBoard, height, width);
+			
 		} else if(doNext == 'G'){
 
 
