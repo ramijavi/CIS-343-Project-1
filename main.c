@@ -133,7 +133,7 @@ int main(int argc, char* argv[]){
 		}
 	}
 
-	prinf("Exiting game...");
+	printf("Exiting game...");
 	exit(0);
 
 	return 0;
