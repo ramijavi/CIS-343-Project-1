@@ -65,16 +65,15 @@ int main(int argc, char* argv[]){
 		freeBoard(&tempBoard, height);
 		/* Call a function to read the file. We pass the file name */
 		/* and the address of the board variable */
-		read_file(fileName, &board);
-		
+		read_file(fileName, &board);	
 		/* Get the dimensions and generation of the new board */
 		height = getHeight(fileName);
 		width = getWidth(fileName);
 		generation = getGen(fileName);
-		allocateBoard(&tempBoard,height,width);
-		copyBoard(&tempBoard, board, height, width);
 		/* Allocating memory for the temp board */
-		
+		allocateBoard(&tempBoard,height,width);
+		/* Copy the board onto the temp board ???????? */
+		copyBoard(&tempBoard, board, height, width);	
 		/* Display the board dimensions and generation */
 		printf("The file was succesfully loaded\n");
 		printf("The height is %d, width is, %d and gen is %d \n", height, width, generation);
@@ -94,7 +93,7 @@ int main(int argc, char* argv[]){
 		printf("What would you like to do next?\nEnter 's' to save file, 'l' to load a file, ");
 		printf("'g' to run ONE generation, and 'G' to run more than one generation. If you want to "); 
 		printf("exit, enter 'e'\n");
-		scanf("%c", &doNext);
+		scanf("  %c", &doNext);
 		
 		if(doNext == 's'){
 
@@ -134,7 +133,7 @@ int main(int argc, char* argv[]){
 		} else if(doNext == 'e'){
 
 			keepPlaying = 0;
-		}
+		}		
 	}
 
 	printf("Exiting game...");
