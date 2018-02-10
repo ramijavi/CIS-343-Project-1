@@ -170,4 +170,15 @@ void populateBoard(char*** board, char* popArray, int height, int width){
 	}
 }
 
+void copyBoard(char*** board, char** board2, int height, int width){
+	//freeBoard(board,height,width);
+	//allocateBoard(tempBoard,height,width);
+	int i,k;
+	for(i = 0; i < height; i++){
+		for(k = 0; k < width; k++){
+		//printf("The char is %c",(*board)[i][k]);
+		(*board)[i][k] = board2[i][k];
+		}
+	}
 
+}

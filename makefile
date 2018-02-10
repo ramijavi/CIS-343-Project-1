@@ -8,4 +8,4 @@ file_utilities.o: file_utilities.c file_utilities.h
 	gcc -c file_utilities.c
 
 clean: 
-	rm -f *.o 
+	rm -f *.o program 
