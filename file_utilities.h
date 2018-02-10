@@ -35,5 +35,6 @@ int getGen(char*);
 // This function populates the board.
 void populateBoard(char***, char*,int,int);
 
-
+// This function copys the second param board to the first
+void copyBoard(char***,char**,int,int);
 #endif
