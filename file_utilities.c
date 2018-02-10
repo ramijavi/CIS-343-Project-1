@@ -183,6 +183,64 @@ void copyBoard(char*** board, char** board2, int height, int width){
 
 }
 
-void runGeneration(char** board, char*** tempBoard){
+void runGeneration(char*** board, char** tempBoard, int height, int width){
+	int i, j, neighborCount;
 
+	printf("I made to runGen!\n");
+	
+	for(i = 0; i < height; i++){
+		for(j = 0; j < width; j++){
+			printf("\n\n INSIDE FORFOR LOOP\n");
+			
+			neighborCount = 0;
+			
+			if(j != width - 1){
+                                if (tempBoard[i][j+1] == 'O'){
+                                        neighborCount++;
+                                }
+                        }
+                        if(j != 0){
+                                if (tempBoard[i][j-1] == 'O'){
+                                        neighborCount++;
+                                }
+                        }
+                        if(i != height - 1){
+                                if (tempBoard[i+1][j] == 'O'){
+                                        neighborCount++;
+                                }
+                        }
+                        if(i != 0){
+                                if (tempBoard[i-1][j] == 'O'){
+                                        neighborCount++;
+                                }
+                        }
+                        if((i != height - 1) && (j != width - 1)){
+                                if (tempBoard[i+1][j+1] == 'O'){
+                                        neighborCount++;
+                                }
+                        }
+                        if((i != height - 1) && ( j != 0)){
+                                if (tempBoard[i+1][j-1] == 'O'){
+                                        neighborCount++;
+                                }
+                        }
+                        if((i != 0) && (j != width -1)){
+                                if (tempBoard[i-1][j+1] == 'O'){
+                                        neighborCount++;
+                                }
+			}
+			if((i != height != 0) && (j != 0)){ 
+                                if (tempBoard[i-1][j-1] == 'O'){
+                                        neighborCount++;
+                                }
+			}
+
+			if(((neighborCount < 2) || (neighborCount > 3)) && tempBoard[i][j] == 'O'){
+				(*board)[i][j] = 'X';
+			} 
+			else if ((neighborCount == 3) && tempBoard[i][j] == 'X'){
+				(*board)[i][j] = 'O';
+			}
+		}
+	}	
 }

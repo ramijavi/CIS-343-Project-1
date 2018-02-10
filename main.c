@@ -77,7 +77,7 @@ int main(int argc, char* argv[]){
 		printf("The height is %d, width is, %d and gen is %d \n", height, width, generation);
 		/* Display board */
 		printBoard(board,height,width);
-		printBoard(tempBoard,height,width);
+		//printBoard(tempBoard,height,width);
 
 	}
 	/* If user do not want to open a file */
@@ -125,11 +125,16 @@ int main(int argc, char* argv[]){
 
 		} else if(doNext == 'g'){
 		/* If user enter 'g', the game will run one generation */
+			
+			/* for debbuging */
+			printf("Inside 'g'\n");
 
 			/* Copy the board onto the temp board */
 	                copyBoard(&tempBoard, board, height, width);
 			/* Call run generation function */
 			runGeneration(&board, tempBoard, height, width);
+			
+			printBoard(board, height, width);
 			
 		} else if(doNext == 'G'){
 

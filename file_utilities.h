@@ -39,6 +39,6 @@ void populateBoard(char***, char*, int, int);
 void copyBoard(char***, char**, int, int);
 
 // This function will run a generation
-void runGeneration(char**, char***, int, int);
+void runGeneration(char***, char**, int, int);
 
 #endif
