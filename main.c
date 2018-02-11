@@ -128,9 +128,6 @@ int main(int argc, char* argv[]){
 		} else if(doNext == 'g'){
 		/* If user enter 'g', the game will run one generation */
 			
-			/* for debbuging */
-			printf("Inside 'g'\n");
-
 			/* Copy the board onto the temp board */
 	                copyBoard(&tempBoard, board, height, width);
 			/* Call run generation function */
