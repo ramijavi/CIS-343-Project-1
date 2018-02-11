@@ -50,9 +50,30 @@ int read_file( char* filename, char ***buffer){
 }
 
 // This function writes the current board to a file, or a save.(The size is how many characters are in the file. what are we using it for?)
-int write_file( char* filename, char ***buffer, int size){
+int write_file( char* filename, char **buffer, int height, int width,int gen,int size){
+	char ch;
+	FILE *out;
+	out = fopen(filename,"w");
+	int index = 0;
+	while (index < size){
+	
 
+
+	}
+	fclose(out);
 	return 0;
+}
+
+
+//from https://codereview.stackexchange.com/questions/73553/finding-the-size-of-a-file	
+int getSize(char* filename){
+	FILE *in;
+	in = fopen(filename,"r");
+	fseek(in, 0, SEEK_END);
+	int size = ftell(in);
+	rewind(in);
+	fclose(in);
+	return size;
 }
 
 // This function allocates memory to hold the 2D array

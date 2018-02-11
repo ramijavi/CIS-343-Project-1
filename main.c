@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 	/* Declaring local variables */
 	char **board;
         char **tempBoard;
-        int height, width, generation;
+        int height, width, generation, size;
 	int keepPlaying = 1;	
 	char openSave;
         char fileName[20];
@@ -75,6 +75,8 @@ int main(int argc, char* argv[]){
 		/* Display the board dimensions and generation */
 		printf("The file was succesfully loaded\n");
 		printf("The height is %d, width is, %d and gen is %d \n", height, width, generation);
+		size = getSize(fileName);
+		printf("size is: %d",size);
 		/* Display board */
 		printBoard(board,height,width);
 		//printBoard(tempBoard,height,width);
