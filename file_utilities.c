@@ -53,11 +53,40 @@ int read_file( char* filename, char ***buffer){
 int write_file( char* filename, char **buffer, int height, int width,int gen,int size){
 	char ch;
 	FILE *out;
-	out = fopen(filename,"w");
+	out = fopen("test.txt","w");
 	int index = 0;
-	while (index < size){
-	
-
+	int sizeSave = 0;
+	int i,k;
+	char newLine = 10;
+	//WORKS, but may implement this one from zed_0xff 
+	//https://stackoverflow.com/questions/3068397/finding-the-length-of-an-integer-in-c
+	while (index < 5){
+		if(index == 0){
+			fprintf(out, "%d\n", height);
+			index++;
+		}
+		else if(index == 1){
+			fprintf(out, "%d\n", width);
+			index++;
+		}
+		else if(index == 2){
+			fprintf(out,"%d\n",gen);
+			index++;
+			//break;
+		}
+		else {
+			for(i = 0; i < height; i++){
+				
+				for(k = 0; k < width; k++){
+					
+					fprintf(out,"%c",buffer[i][k]);
+					if((k + 1) % width == 0 && k != 0){
+						fprintf(out,"%c",newLine);
+					}
+				}
+			}
+			break;
+		}
 
 	}
 	fclose(out);

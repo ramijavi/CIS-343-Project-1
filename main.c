@@ -14,6 +14,8 @@
 
 #include "file_utilities.h"
 
+void testFunction(char* fileName, char** board, int height, int width, int generation);
+
 int main(int argc, char* argv[]){
 
 	/* Declaring local variables */
@@ -81,6 +83,7 @@ int main(int argc, char* argv[]){
 		/* Display board */
 		printBoard(board,height,width);
 		//printBoard(tempBoard,height,width);
+		testFunction(fileName,board,height,width,generation);
 
 	}
 	/* If user do not want to open a file */
@@ -124,6 +127,7 @@ int main(int argc, char* argv[]){
                 	printf("The height is %d, width is, %d and gen is %d \n",height, width,generation);
                 	/* Display board */
                 	printBoard(board,height,width);
+			
 
 
 		} else if(doNext == 'g'){
@@ -174,5 +178,7 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-
+void testFunction(char* fileName, char** board, int height, int width, int generation){
+	write_file(fileName, board, height, width, generation, getSize(fileName));
+}
 
