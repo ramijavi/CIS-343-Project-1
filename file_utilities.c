@@ -267,7 +267,7 @@ void runGeneration(char*** board, char** tempBoard, int height, int width){
                                 }
 			}
 			/* Check if the cell is not on the top left corner */
-			if((i != height != 0) && (j != 0)){ 
+			if((i != 0) && (j != 0)){ 
 				/* Check if the spot to its top left has a live cell*/
                                 if (tempBoard[i-1][j-1] == 'O'){
                                         neighborCount++;
