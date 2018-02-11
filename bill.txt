@@ -1,8 +1,8 @@
 5
 3
 78
-xxx
+oxo
 xoo
-x x
-x x
-xxo
+o o
+oox
+oxo

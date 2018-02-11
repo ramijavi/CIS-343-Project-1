@@ -212,14 +212,14 @@ void runGeneration(char*** board, char** tempBoard, int height, int width){
 	/* Nested for loop to iterate through every element of the board array */	
 	for(i = 0; i < height; i++){
 		for(j = 0; j < width; j++){
-			printf("\n\n INSIDE FORFOR LOOP\n");
+			printf("\nINSIDE DoubleFOR LOOP\n");
 			/* Reset the neighbor count to 0 for every cell */
 			neighborCount = 0;
 			
 			/* Check if the cell is not on the right border of the board */
 			if(j != width - 1){
 				/* Check if the spot to its right has a live cell */
-                                if (tempBoard[i][j+1] == 'O'){
+                                if (tempBoard[i][j+1] == 'o'){
 					/* If there is, increment neighbor count*/
                                         neighborCount++;
                                 }
@@ -227,64 +227,66 @@ void runGeneration(char*** board, char** tempBoard, int height, int width){
 			/* Check if the cell is not on the left border of the board */
                         if(j != 0){
 				/* Check if the spot to its left has a live cell */
-                                if (tempBoard[i][j-1] == 'O'){
+                                if (tempBoard[i][j-1] == 'o'){
                                         neighborCount++;
                                 }
                         }
 			/* Check if the cell is not on the bottom border of the board */
                         if(i != height - 1){
 				/* Check if the spot below has a live cell */
-                                if (tempBoard[i+1][j] == 'O'){
+                                if (tempBoard[i+1][j] == 'o'){
                                         neighborCount++;
                                 }
                         }
 			/* Check if the cell is not on the top border of the board*/
                         if(i != 0){
 				/* Check if the spot above has a live cell*/
-                                if (tempBoard[i-1][j] == 'O'){
+                                if (tempBoard[i-1][j] == 'o'){
                                         neighborCount++;
                                 }
                         }
 			/* Check if the cell is not on the bottom right corner */
                         if((i != height - 1) && (j != width - 1)){
 				/* Check if the spot to its bottom right has a live cell */
-                                if (tempBoard[i+1][j+1] == 'O'){
+                                if (tempBoard[i+1][j+1] == 'o'){
                                         neighborCount++;
                                 }
                         }
 			/* Check if the cell is not on the bottom left corner */
                         if((i != height - 1) && ( j != 0)){
 				/* Check if the spot to its bottom left has a live cell */
-                                if (tempBoard[i+1][j-1] == 'O'){
+                                if (tempBoard[i+1][j-1] == 'o'){
                                         neighborCount++;
                                 }
                         }
 			/* Check if the cell is not on the top right corner */
                         if((i != 0) && (j != width -1)){
 				/* Check if the spot to its top right has a live cell */
-                                if (tempBoard[i-1][j+1] == 'O'){
+                                if (tempBoard[i-1][j+1] == 'o'){
                                         neighborCount++;
                                 }
 			}
 			/* Check if the cell is not on the top left corner */
 			if((i != 0) && (j != 0)){ 
 				/* Check if the spot to its top left has a live cell*/
-                                if (tempBoard[i-1][j-1] == 'O'){
+                                if (tempBoard[i-1][j-1] == 'o'){
                                         neighborCount++;
                                 }
 			}
 			/* At this point, we should have the exact number of neighbors that the current cell has */
 			/* We check if the cell will survive or not depending on the number of neighbors that it has */
-			
+		
+			printf("\nNEIGHBOR COUNT FOR CELL %d,%d = %d\n", i, j, neighborCount); 
+	
 			/* If the cell is currently alive and has less than 2 or more than 3 neighbors */
-			if(((neighborCount < 2) || (neighborCount > 3)) && tempBoard[i][j] == 'O'){
+			if(((neighborCount < 2) || (neighborCount > 3)) && tempBoard[i][j] == 'o'){
 				/* Then that cell will die */
-				(*board)[i][j] = 'X';
+				(*board)[i][j] = 'x';
 			} 
 			/* If the cell is currently dead and has exactly 3 neighbors */
-			else if ((neighborCount == 3) && tempBoard[i][j] == 'X'){
+			else if ((neighborCount == 3) && tempBoard[i][j] == 'x'){
 				/* Then it will come back to life */
-				(*board)[i][j] = 'O';
+				(*board)[i][j] = 'o';
 			}
 		}
 	}	

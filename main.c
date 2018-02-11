@@ -144,7 +144,7 @@ int main(int argc, char* argv[]){
 		}		
 	}
 
-	printf("Exiting game...");
+	printf("Exiting game...\n");
 	exit(0);
 
 	return 0;
