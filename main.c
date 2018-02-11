@@ -23,7 +23,8 @@ int main(int argc, char* argv[]){
 	int keepPlaying = 1;	
 	char openSave;
         char fileName[20];
-	char doNext;	
+	char doNext;
+	int runGen;	
 
 	/* Greet the player when the game is initialized */
 	printf("\nWelcome player. You are playing the game of life\n");
@@ -126,17 +127,40 @@ int main(int argc, char* argv[]){
 
 
 		} else if(doNext == 'g'){
-		/* If user enter 'g', the game will run one generation */
+		/* If user enters 'g', the game will run one generation */
 			
 			/* Copy the board onto the temp board */
 	                copyBoard(&tempBoard, board, height, width);
 			/* Call run generation function */
 			runGeneration(&board, tempBoard, height, width);
-			
+			/* Increase the generation by one */			
+			generation++;
+			/* Display the board */
 			printBoard(board, height, width);
 			
 		} else if(doNext == 'G'){
+		/* If user enters 'G', the game will run for as many generations as specified */
+		
+			runGen = 0;		
+	
+			/* Ask the user for the number of generations to run */
+			printf("How many generations do you want to run?\n");
+			scanf(" %d", &runGen);
+			
+			/* Run the specified number of generations */
+			while(runGen > 0){
 
+				/* Copy the board onto the temp board */
+	                        copyBoard(&tempBoard, board, height, width);
+        	                /* Call run generation function */
+                	        runGeneration(&board, tempBoard, height, width);
+                	        /* Increase the generation by one */
+                	        generation++;
+                	        /* Display the board */
+                	        printBoard(board, height, width);
+	
+				runGen--;
+			}
 
 		} else if(doNext == 'e'){
 

@@ -212,7 +212,6 @@ void runGeneration(char*** board, char** tempBoard, int height, int width){
 	/* Nested for loop to iterate through every element of the board array */	
 	for(i = 0; i < height; i++){
 		for(j = 0; j < width; j++){
-			printf("\nINSIDE DoubleFOR LOOP\n");
 			/* Reset the neighbor count to 0 for every cell */
 			neighborCount = 0;
 			
@@ -275,8 +274,6 @@ void runGeneration(char*** board, char** tempBoard, int height, int width){
 			}
 			/* At this point, we should have the exact number of neighbors that the current cell has */
 			/* We check if the cell will survive or not depending on the number of neighbors that it has */
-		
-			printf("\nNEIGHBOR COUNT FOR CELL %d,%d = %d\n", i, j, neighborCount); 
 	
 			/* If the cell is currently alive and has less than 2 or more than 3 neighbors */
 			if(((neighborCount < 2) || (neighborCount > 3)) && tempBoard[i][j] == 'o'){
