@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
 	/* If user wants to open a file */
 	if(openSave == 'y'){
 		/* Ask the player for the file name */
-		printf("Enter the file name you wish to open. 10x10.txt or 20x20.txt \n");
+		printf("Enter the file name you wish to open. 10x10.txt or 15x15.txt \n");
 		scanf("%s", fileName);
 
 		/* Display the file name*/
