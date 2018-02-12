@@ -1,3 +1,11 @@
+/*
+ * This is the header file for our Game Of Life Project
+ *
+ * @authors - Andy Hing Hung & Javier Ramirez
+ * @version - Winter 2018
+ *
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

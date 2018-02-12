@@ -10,6 +10,7 @@
  * management in general. 
  *
  * @authors - Andy Hing Hung & Javier Ramirez
+ * @version - Winter 2018
  */
 
 #include "file_utilities.h"
@@ -84,7 +85,7 @@ int main(int argc, char* argv[]){
 		/* If user enters 's', then the game will be written onto a file */
 			
 			/* Ask user for file name */
-			printf("What name do you want to save your game under?\n");
+			printf("What name do you want to save your game under? (Remember to add .txt)\n");
 			scanf(" %s", fileSave);
 
 			/* Call save function */

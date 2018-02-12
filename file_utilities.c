@@ -1,32 +1,52 @@
+/*
+ * This is the source file that contains all the helper functions
+ * that are called from the main()
+ *
+ * @authors - Andy Hing Hung & Javier Ramirez
+ * @version - Winter 2018
+ */
+
+
 #include "file_utilities.h"
 
-// This function reads the file, creates the board, and populates the cells.
+/* This function reads the file, creates the board, and populates the cells */
 int read_file( char* filename, char ***buffer){
+
 	//ch is the current char in the file.
 	char ch;
+
 	//This is the file pointer.
       	FILE *in;
+
 	//We open the file and do a read.
 	in = fopen (filename,"r" );
+
 	//This variables are for the height, width and generation.
 	int height, width, genNum;
-	//this counter will tell us if we are currently
+
+	//This counter will tell us if we are currently
 	//on the line for height,width, or generation.
 	int counter = 0;
+
 	//This variable holds the numbers to be
 	//converted to integer
 	char buf[1024];
 	
 	//If file doesn't exist, exist.
 	if ( in == NULL ){
+
 		printf ( "file could not be opened!\n" );
 		exit (1);
+
       	} else { //File exists, do the logic.
+
 		while(counter < 3){
+
 			//Idea from for reading a line from a combination of authors,
 			//https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
 			fgets(buf, sizeof(buf), in);
 		    	buf[strlen(buf) - 1] = '\0';
+
 			if(counter == 0){
 				height = atoi(buf);
 			} else if(counter == 1){
@@ -38,15 +58,19 @@ int read_file( char* filename, char ***buffer){
 		}
 		//this array will contain the cells
 		char populateArray[height*width];
+
 		//Allocates the board
 		allocateBoard(buffer,height, width);
+
 		//keeps track where in the popArray we are
 		int popCounter = 0;
+
 		//Goes through every character in the file,
 		//code example from Xiang Cao, professor @ GVSU
 		while ( ! feof(in) )   {
 			//Scans the character from filename
 			fscanf ( in, "%c", &ch);
+
 			//makes sure this character is not an integer and a new line.
 			if(!(ch > 48 && ch < 58) &&  ch != 10){
 				populateArray[popCounter] = ch;
@@ -63,18 +87,24 @@ int read_file( char* filename, char ***buffer){
 
 // This function writes the current board to a file, or a save.
 int write_file( char* filename, char **buffer, int height, int width,int gen,int size){
+
 	//ch is the current char in the file.
 	char ch;
+
 	//This is the file pointer.
 	FILE *out;
+
 	//We open/create the file and do a write.
 	out = fopen(filename,"w");
+
 	//To know if we are writing the board
 	//information, or the cells.
 	int index = 0;
 	int sizeSave = 0;
+
 	//Used for the for-loop to go through the board.
 	int i,k;
+
 	//Used to create a new line.
 	char newLine = 10;
 	
@@ -102,6 +132,7 @@ int write_file( char* filename, char **buffer, int height, int width,int gen,int
 				for(k = 0; k < width; k++){
 					//writes the cell
 					fprintf(out,"%c",buffer[i][k]);
+
 					//Make sure its not the first cell and if 
 					//its the last, new line.
 					if((k + 1) % width == 0 && k != 0){
