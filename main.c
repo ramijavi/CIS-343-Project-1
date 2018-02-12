@@ -9,7 +9,7 @@
  * In this assignment we will focus our attention mostly on memory allocation & memory
  * management in general. 
  *
- * @authors - Andy Hing Hung & Javier Ramirez
+ * @authors - Andy hing Hung & Javier Ramirez
  * @version - Winter 2018
  */
 
