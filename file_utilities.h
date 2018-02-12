@@ -6,42 +6,40 @@
 #define file_utilities_h
 
 
-// This function will read data from a chosen file
+/* This function will read data from a chosen file */
 int read_file (char*, char***);
 
-// This function will save data onto a file
+/* This function will save data onto a file */
 int write_file(char*, char**, int,int,int,int);
 
-// This function returns the size of the file.
+/* This function returns the size of the file */
 int getSize(char*);
 
-// This function allocates the board to act like 
-// a 2d array.
+/* This function allocates memory to hold the board array */
 void allocateBoard(char***,int, int);
 
-// This function prints the board on the terminal.
+/* This function prints the board on the terminal */
 void printBoard(char**, int, int);
 
-// This function allocates memory to hold the 2D array
-// that holds the board. It uses the function malloc.
+/* This function frees the memory that holds the board */
 void freeBoard(char***, int);
 
-// This function gets the height of the board.
+/* This function gets the height of the board */
 int getHeight(char*);
 
-// This function gets the width of the board.
+/* This function gets the width of the board */
 int getWidth(char*);
 
-// This function gets the generation of the board.
+/* This function gets the generation of the board */
 int getGen(char*);
 
-// This function populates the board.
+/* This function populates the board */
 void populateBoard(char***, char*, int, int);
 
-// This function copys the second param board to the first
+/* This function copys the second param board to the first */
 void copyBoard(char***, char**, int, int);
 
-// This function will run a generation
+/* This function will run a generation */
 void runGeneration(char***, char**, int, int);
 
 #endif
