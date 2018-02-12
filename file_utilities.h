@@ -12,7 +12,7 @@ int read_file (char*, char***);
 // This function will save data onto a file
 int write_file(char*, char**, int,int,int,int);
 
-//
+// This function returns the size of the file.
 int getSize(char*);
 
 // This function allocates the board to act like 
