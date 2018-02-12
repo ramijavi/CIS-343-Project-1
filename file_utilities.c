@@ -1,6 +1,7 @@
 #include "file_utilities.h"
 
-// This function reads the file and creates the board.
+// This function reads the file, creates the board, and populates the cells.
+// Usage of FILE was thanks to Xiang Cao, professor at GVSU.
 int read_file( char* filename, char ***buffer){
 
 	char ch;
@@ -49,18 +50,17 @@ int read_file( char* filename, char ***buffer){
 	return 0;
 }
 
-// This function writes the current board to a file, or a save.(The size is how many characters are in the file. what are we using it for?)
+// This function writes the current board to a file, or a save.
 int write_file( char* filename, char **buffer, int height, int width,int gen,int size){
 	char ch;
 	FILE *out;
-	out = fopen("test.txt","w");
+	out = fopen(filename,"w");
 	int index = 0;
 	int sizeSave = 0;
 	int i,k;
 	char newLine = 10;
-	//WORKS, but may implement this one from zed_0xff 
-	//https://stackoverflow.com/questions/3068397/finding-the-length-of-an-integer-in-c
-	while (index < 5){
+	
+	while (index < 4){
 		if(index == 0){
 			fprintf(out, "%d\n", height);
 			index++;
@@ -85,7 +85,7 @@ int write_file( char* filename, char **buffer, int height, int width,int gen,int
 					}
 				}
 			}
-			break;
+			index++;
 		}
 
 	}
@@ -94,7 +94,8 @@ int write_file( char* filename, char **buffer, int height, int width,int gen,int
 }
 
 
-//from https://codereview.stackexchange.com/questions/73553/finding-the-size-of-a-file	
+// Getting the size of the file,from Yuushi on 
+// https://codereview.stackexchange.com/questions/73553/finding-the-size-of-a-file
 int getSize(char* filename){
 	FILE *in;
 	in = fopen(filename,"r");
@@ -106,7 +107,8 @@ int getSize(char* filename){
 }
 
 // This function allocates memory to hold the 2D array
-// that holds the board. It uses the function malloc
+// that holds the board. Thanks to: Abhay Rathi
+// https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
 void allocateBoard(char*** board,int height,int width){
 
 	int r = height, c = width, i, j;
@@ -233,6 +235,7 @@ void copyBoard(char*** board, char** board2, int height, int width){
 
 }
 
+// This function will run a generation on the board.
 void runGeneration(char*** board, char** tempBoard, int height, int width){
 	/* The variables i and j will be used in the for loops */	
 	/* NeighborCount will be used to count how many neighbors each cell has */
