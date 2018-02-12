@@ -14,7 +14,6 @@
 
 #include "file_utilities.h"
 
-void testFunction(char* fileName, char** board, int height, int width, int generation);
 
 int main(int argc, char* argv[]){
 
@@ -31,41 +30,17 @@ int main(int argc, char* argv[]){
 	/* Greet the player when the game is initialized */
 	printf("\nWelcome player. You are playing the game of life\n");
 	
-	/* Check if the player entered correct input */
-	/* Correct input should be two numbers */
-	if(argc < 3 || argc > 3){
-		/* If input was not correct, the player is notified */ 
-		/* and the game is exited */
-		printf("\nUser did not specify height and width of game. Exiting...");
-		return 0;
-	}
-	/* If input is correct, then it's shown to the player */
-	printf("\nYou have chosen to play with a board of size : %s x %s \n", argv[1], argv[2]);
-
-	/* The size of the board is stored in our variables */
-	height = atoi(argv[1]);
-	width = atoi(argv[2]);
-	
-	/* We allocate memory for our board, as well as a temp board */
-	allocateBoard(&board,height,width);
- 	allocateBoard(&tempBoard,height,width);
-	/* Prints board */
-	printBoard(board,height,width);
-	
 	/* Ask user if they would like to open a file */
-	printf("Would you like to open an existing saved generation?(y / n)\n");
+	printf("To start the game, type 'y'. Or to close, type a random letter.\n");
 	scanf("%c", &openSave);
 	printf("\n");
 	/* If user wants to open a file */
 	if(openSave == 'y'){
 		/* Ask the player for the file name */
-		printf("Enter the file name you wish to open. \n");
+		printf("Enter the file name you wish to open. 10x10.txt or 20x20.txt \n");
 		scanf("%s", fileName);
 		/* Display file name*/
 		printf("The fileName is: %s \n", fileName);
-		/* Call a function to free both boards */
-		freeBoard(&board, height);
-		freeBoard(&tempBoard, height);
 		/* Call a function to read the file. We pass the file name */
 		/* and the address of the board variable */
 		read_file(fileName, &board);	
@@ -83,12 +58,12 @@ int main(int argc, char* argv[]){
 		/* Display board */
 		printBoard(board,height,width);
 		//printBoard(tempBoard,height,width);
-		testFunction(fileName,board,height,width,generation);
+		
 
 	}
 	/* If user do not want to open a file */
 	else{
-		printf("They said no %s", fileName);
+		printf("You didn't type 'y'. Closing..\n");
 		exit(0);
 	}
 	
@@ -178,7 +153,5 @@ int main(int argc, char* argv[]){
 	return 0;
 }
 
-void testFunction(char* fileName, char** board, int height, int width, int generation){
-	write_file(fileName, board, height, width, generation, getSize(fileName));
-}
+
 
