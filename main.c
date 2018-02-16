@@ -40,6 +40,8 @@ int main(int argc, char* argv[]){
 	if(openSave == 'y'){
 		/* Ask the player for the file name */
 		printf("Enter the file name you wish to open. 10x10.txt or 15x15.txt \n");
+		printf("You can make your own, but follow the layout! height, width, gen#, board.\n");
+		printf("You can check inside 10x10.txt or 15x15.txt to get an idea.\n");
 		scanf("%s", fileName);
 
 		/* Display the file name*/
